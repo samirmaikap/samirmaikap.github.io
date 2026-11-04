@@ -1,0 +1,24 @@
+# Samir Maikap
+
+> Senior AI Product Engineer in Kolkata, India, working US hours. I help founders and product teams turn an AI idea into a product people rely on, in weeks: one senior engineer who plans weekly, builds with AI coding agents, and verifies AI output with tests and evals. Independent since 2017. Available now for full-time remote roles and select AI builds.
+
+Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · LinkedIn: https://www.linkedin.com/in/samirmaikap · Résumé: https://samirmaikap.github.io/resume.pdf
+
+## Case studies
+
+- [How I made Decize's AI debriefs trustworthy](https://samirmaikap.github.io/case-studies/decize-evals/): blind LLM judges, a 57-case stress set and a fresh 36-case holdout; faithful debrief lines from 91.6% to 100%.
+- [Building Catalog's AI stylist](https://samirmaikap.github.io/case-studies/catalog-try-on/): Claude vision selfie check, Seedance renders with a one-shot Gemini fallback, and a catalog that stocks itself from shopper searches.
+
+## Selected work
+
+- [Catalog](https://catalog.shop): AI fashion app with virtual try-on (Catalog Digital, 2025–2026). Shopify portal onboarded 4 brands.
+- [FITTWorks](https://fittworks.app): third generation of the FITT product line for MCS Media (lead engineer since 2018), after LeanFITT and LeadershipFITT with an AI coach.
+- [Decize](https://decize.app): decision ledger for teams with eval-checked AI debriefs (own product).
+- [Bartesian](https://bartesian.com): lead developer of the cocktail machine's companion app (2023–2024).
+- [WildTrack](https://www.wildtrack.org): field app for logging wildlife sightings (2024).
+- [Tovo](https://tovo.run): Slack-native team checklists on Claude Haiku, 12 days to the Slack Marketplace.
+- [SpawnSweep](https://github.com/samirmaikap/spawnsweep): Mac app that cleans up after AI coding agents.
+
+## Skills
+
+AI: Claude, Gemini, OpenAI, RAG with pgvector, LLM evals and judges, MCP servers and agents. Product: TypeScript, Next.js, React, Remix, Node.js, Python. Mobile: Flutter, React Native, SwiftUI. Data and testing: Supabase, PostgreSQL, AWS, Vitest, Playwright, pgTAP.

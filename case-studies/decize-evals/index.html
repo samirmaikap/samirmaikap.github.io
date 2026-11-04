@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How I made Decize's AI debriefs trustworthy · Samir Maikap</title>
+<meta name="description" content="Case study by Samir Maikap: measuring an LLM debrief feature with blind LLM judges, a 57-case stress set and a fresh holdout, taking faithful lines from 91.6% to 100%.">
+<link rel="canonical" href="https://samirmaikap.github.io/case-studies/decize-evals/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://samirmaikap.github.io/case-studies/decize-evals/">
+<meta property="og:title" content="How I made Decize's AI debriefs trustworthy">
+<meta property="og:description" content="Case study by Samir Maikap: measuring an LLM debrief feature with blind LLM judges, a 57-case stress set and a fresh holdout, taking faithful lines from 91.6% to 100%.">
+<meta property="og:image" content="https://samirmaikap.github.io/samir-photo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Samir Maikap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "How I made Decize's AI debriefs trustworthy", "description": "Case study by Samir Maikap: measuring an LLM debrief feature with blind LLM judges, a 57-case stress set and a fresh holdout, taking faithful lines from 91.6% to 100%.", "datePublished": "2026-11-04", "dateModified": "2026-11-04", "inLanguage": "en", "url": "https://samirmaikap.github.io/case-studies/decize-evals/", "mainEntityOfPage": "https://samirmaikap.github.io/case-studies/decize-evals/", "image": "https://samirmaikap.github.io/samir-photo.jpg", "keywords": "LLM evaluation, LLM-as-judge, hallucination, extractive summarization, prompt engineering, Supabase, Gemini, Claude", "about": {"@type": "SoftwareApplication", "name": "Decize", "url": "https://decize.app", "applicationCategory": "BusinessApplication"}, "author": {"@type": "Person", "@id": "https://samirmaikap.github.io/#person", "name": "Samir Maikap", "url": "https://samirmaikap.github.io/", "jobTitle": "Senior AI Product Engineer"}, "publisher": {"@type": "Person", "@id": "https://samirmaikap.github.io/#person", "name": "Samir Maikap"}, "isPartOf": {"@id": "https://samirmaikap.github.io/#website"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Samir Maikap", "item": "https://samirmaikap.github.io/"}, {"@type": "ListItem", "position": 2, "name": "How I made Decize's AI debriefs trustworthy", "item": "https://samirmaikap.github.io/case-studies/decize-evals/"}]}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161616'/%3E%3Ctext x='32' y='41' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23fff' text-anchor='middle'%3ESM%3C/text%3E%3Crect x='10' y='50' width='44' height='4' rx='2' fill='%23E5202E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Caveat:wght@700&family=JetBrains+Mono:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#FFFFFF;--bg-alt:#F4F3F1;--ink:#161616;--text:#2B2B2B;--muted:#5F5E5B;--accent:#E5202E;--accent-text:#C1121F;--accent-tint:#FDE9E8;
+ --display:"Archivo","Helvetica Neue",Arial,sans-serif;--body:"Plus Jakarta Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--hand:"Caveat","Segoe Print",cursive;color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:1.125rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-text)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:760px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{position:sticky;top:0;background:rgb(255 255 255 / .9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:5}
+.top .wrap{max-width:1100px;display:flex;justify-content:space-between;align-items:center;gap:16px;height:64px}
+.home{font-family:var(--display);font-weight:800;color:var(--ink);text-decoration:none}
+.cta{font-weight:700;font-size:.95rem;padding:10px 16px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none}
+article{padding-block:clamp(40px,7vw,80px) 48px}
+.kicker{font-family:var(--mono);font-size:.85rem;font-weight:600;color:var(--accent-text)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.1rem);line-height:1.08;letter-spacing:-.03em;color:var(--ink);margin:.4em 0 .35em;text-wrap:balance}
+.meta{font-size:.95rem;color:var(--muted);margin:0 0 28px}
+.lead{font-size:1.25rem;line-height:1.6;color:var(--ink);margin:0 0 32px}
+h2{font-family:var(--display);font-weight:800;font-size:1.55rem;line-height:1.2;letter-spacing:-.02em;color:var(--ink);margin:44px 0 10px}
+p{margin:0 0 16px}
+ul,ol{padding-left:1.25em;margin:0 0 16px}
+li{margin-bottom:8px}
+b,strong{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:8px 0 12px}
+@media (max-width:600px){.stats{grid-template-columns:minmax(0,1fr)}}
+.stat{padding:16px 18px;border-radius:18px;background:var(--bg-alt)}
+.stat.hot{background:var(--accent-tint)}
+.stat b{display:block;font-family:var(--display);font-weight:900;font-size:1.9rem;line-height:1.05;color:var(--ink)}
+.stat span{font-size:.92rem;color:var(--muted);line-height:1.4;display:block;margin-top:4px}
+.rules{list-style:none;padding:0;display:grid;gap:10px}
+.rules li{padding:14px 18px;border-radius:16px;background:var(--bg-alt);margin:0}
+.note{font-family:var(--hand);font-weight:700;font-size:1.5rem;color:var(--accent-text);display:inline-block;rotate:-2deg}
+.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{margin:0;font-size:.9rem;font-weight:600;padding:5px 11px;border-radius:9px;background:var(--bg-alt)}
+.end{margin-top:48px;padding:24px;border-radius:24px;background:var(--ink);color:#F6F5F3}
+.end h2{color:#fff;margin-top:0}
+.end a{color:#fff;font-weight:700}
+footer .wrap{max-width:1100px;padding-block:28px;font-size:.95rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="home" href="../../">← Samir Maikap</a><a class="cta" href="../../#contact">Hire me</a></div></header>
+<main><article class="wrap">
+<p class="kicker">Case study · Decize · 2025–2026</p>
+<h1>How I made Decize's AI debriefs trustworthy</h1>
+<p class="meta">By Samir Maikap, Senior AI Product Engineer · November 2026 · 5 min read</p>
+<p class="lead">Decize is a decision ledger for teams. When a decision plays out, an AI writes the debrief. This is how I measured whether that debrief was telling the truth, found where it wasn't, and took faithful lines from 91.6% to 100%.</p>
+<div class="stats">
+  <div class="stat hot"><b>91.6% → 100%</b><span>faithful lines on a 57-case stress set</span></div>
+  <div class="stat"><b>221 / 221</b><span>lines faithful on a fresh 36-case holdout (old prompt: 89.6%)</span></div>
+  <div class="stat"><b>3 judges</b><span>blind LLM judges score every line, 2 of 3 to pass</span></div>
+</div>
+
+<h2>The product</h2>
+<p>Decize captures team decisions from the web app, email and Slack, helps the team frame and forecast them, follows up on outcomes, and runs a review. All of its AI work runs through one Supabase edge function with 13 modes. Each call goes to Gemini first, and any failure moves it to Claude.</p>
+
+<h2>The risk</h2>
+<p>A debrief has two parts: what happened, and what to do next time. If the model adds a line nobody wrote, the team stops trusting the whole ledger. "Sounds right" was not good enough. Every line had to be traceable to something a person actually said.</p>
+
+<h2>Extractive by design</h2>
+<p>I made the debrief extractive. Every line must be a word-for-word phrase from its source, and code checks this and drops any line that isn't. A made-up sentence can't reach the screen, even if the model writes one.</p>
+
+<h2>Measuring it with blind judges</h2>
+<ul>
+  <li>I ran the production function locally, three times per case, so a lucky run couldn't hide a bad prompt.</li>
+  <li>Three blind LLM judges, each reading through a different lens, scored every line the model showed. A line passed with 2 of 3 votes, and a tie-break judge settled splits.</li>
+  <li>I built a stress set of 57 cases covering 19 ways a debrief can go wrong, plus a 27-case check of the test rig itself.</li>
+</ul>
+<p>The first run scored <b>391 of 427 lines faithful (91.6%)</b>. That cleared the original 90% gate, but not the bar I wanted for a feature people would act on. So before changing anything, I set a new bar of 97% on every set.</p>
+
+<h2>Two rules fixed it</h2>
+<p>Prompt version 28 added two rules:</p>
+<ol class="rules">
+  <li><b>A mixed answer keeps both sides.</b> If someone says part went well and part didn't, the debrief can't keep only the half that fits a neat story.</li>
+  <li><b>Plans, advice to others and sarcasm never count as "Next time".</b> Only a real lesson from the person who lived it does.</li>
+</ol>
+
+<h2>Proving it on fresh data</h2>
+<p>A fix tuned against one set can just memorise that set, so I wrote a <b>new 36-case holdout after the fix</b>. Results:</p>
+<ul>
+  <li>Stress set: <b>363 of 363</b> lines faithful.</li>
+  <li>Fresh holdout: <b>221 of 221</b>. The old prompt scored 89.6% on the same cases.</li>
+  <li>Rig check: 27 of 27.</li>
+</ul>
+
+<h2>What the numbers do and don't say</h2>
+<p>The scores count the lines the model chose to show. After the fix it leaves out "What happened" more often (shown in 120 of 171 stress runs). That's the trade-off I chose: fewer lines, but every line shown is faithful. The prompt rules are pinned by tests in CI. The live eval runs are still a manual gate, and moving them into CI is the next step.</p>
+<p><span class="note">the boring part is the point</span></p>
+
+<h2>Stack</h2>
+<ul class="chips"><li>Next.js</li><li>TypeScript</li><li>Supabase Edge Functions</li><li>Deno</li><li>Gemini</li><li>Claude</li><li>node:test</li></ul>
+<section class="end">
+  <h2>Need an AI feature that has to be right?</h2>
+  <p>I'm available now for full-time remote roles and select AI builds, with 9am–1pm ET overlap. Email <a href="mailto:maikap.samir@gmail.com">maikap.samir@gmail.com</a> or see <a href="../../">my work</a>. Code walkthrough on request.</p>
+</section>
+</article></main>
+<footer><div class="wrap">© 2026 Samir Maikap · <a href="../../">withsam.io home</a> · <a href="https://github.com/samirmaikap">GitHub</a> · <a href="https://www.linkedin.com/in/samirmaikap">LinkedIn</a></div></footer>
+</body>
+</html>

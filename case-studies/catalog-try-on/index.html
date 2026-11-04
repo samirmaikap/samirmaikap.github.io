@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Building Catalog's AI stylist: virtual try-on that fails safely · Samir Maikap</title>
+<meta name="description" content="Case study by Samir Maikap: a selfie check with Claude vision, Seedance renders with a one-shot Gemini fallback that can't loop, and a catalog that stocks itself from shopper searches.">
+<link rel="canonical" href="https://samirmaikap.github.io/case-studies/catalog-try-on/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://samirmaikap.github.io/case-studies/catalog-try-on/">
+<meta property="og:title" content="Building Catalog's AI stylist: virtual try-on that fails safely">
+<meta property="og:description" content="Case study by Samir Maikap: a selfie check with Claude vision, Seedance renders with a one-shot Gemini fallback that can't loop, and a catalog that stocks itself from shopper searches.">
+<meta property="og:image" content="https://samirmaikap.github.io/samir-photo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Samir Maikap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Building Catalog's AI stylist: virtual try-on that fails safely", "description": "Case study by Samir Maikap: a selfie check with Claude vision, Seedance renders with a one-shot Gemini fallback that can't loop, and a catalog that stocks itself from shopper searches.", "datePublished": "2026-11-04", "dateModified": "2026-11-04", "inLanguage": "en", "url": "https://samirmaikap.github.io/case-studies/catalog-try-on/", "mainEntityOfPage": "https://samirmaikap.github.io/case-studies/catalog-try-on/", "image": "https://samirmaikap.github.io/samir-photo.jpg", "keywords": "virtual try-on, AI image generation, Claude vision, Seedance, Gemini, webhooks, idempotency, Shopify, Supabase", "about": {"@type": "SoftwareApplication", "name": "Catalog", "url": "https://catalog.shop", "applicationCategory": "ShoppingApplication"}, "author": {"@type": "Person", "@id": "https://samirmaikap.github.io/#person", "name": "Samir Maikap", "url": "https://samirmaikap.github.io/", "jobTitle": "Senior AI Product Engineer"}, "publisher": {"@type": "Person", "@id": "https://samirmaikap.github.io/#person", "name": "Samir Maikap"}, "isPartOf": {"@id": "https://samirmaikap.github.io/#website"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Samir Maikap", "item": "https://samirmaikap.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Building Catalog's AI stylist: virtual try-on that fails safely", "item": "https://samirmaikap.github.io/case-studies/catalog-try-on/"}]}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161616'/%3E%3Ctext x='32' y='41' font-family='Arial,sans-serif' font-size='26' font-weight='800' fill='%23fff' text-anchor='middle'%3ESM%3C/text%3E%3Crect x='10' y='50' width='44' height='4' rx='2' fill='%23E5202E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Caveat:wght@700&family=JetBrains+Mono:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#FFFFFF;--bg-alt:#F4F3F1;--ink:#161616;--text:#2B2B2B;--muted:#5F5E5B;--accent:#E5202E;--accent-text:#C1121F;--accent-tint:#FDE9E8;
+ --display:"Archivo","Helvetica Neue",Arial,sans-serif;--body:"Plus Jakarta Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--hand:"Caveat","Segoe Print",cursive;color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:1.125rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-text)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:760px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{position:sticky;top:0;background:rgb(255 255 255 / .9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:5}
+.top .wrap{max-width:1100px;display:flex;justify-content:space-between;align-items:center;gap:16px;height:64px}
+.home{font-family:var(--display);font-weight:800;color:var(--ink);text-decoration:none}
+.cta{font-weight:700;font-size:.95rem;padding:10px 16px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none}
+article{padding-block:clamp(40px,7vw,80px) 48px}
+.kicker{font-family:var(--mono);font-size:.85rem;font-weight:600;color:var(--accent-text)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.1rem);line-height:1.08;letter-spacing:-.03em;color:var(--ink);margin:.4em 0 .35em;text-wrap:balance}
+.meta{font-size:.95rem;color:var(--muted);margin:0 0 28px}
+.lead{font-size:1.25rem;line-height:1.6;color:var(--ink);margin:0 0 32px}
+h2{font-family:var(--display);font-weight:800;font-size:1.55rem;line-height:1.2;letter-spacing:-.02em;color:var(--ink);margin:44px 0 10px}
+p{margin:0 0 16px}
+ul,ol{padding-left:1.25em;margin:0 0 16px}
+li{margin-bottom:8px}
+b,strong{color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:8px 0 12px}
+@media (max-width:600px){.stats{grid-template-columns:minmax(0,1fr)}}
+.stat{padding:16px 18px;border-radius:18px;background:var(--bg-alt)}
+.stat.hot{background:var(--accent-tint)}
+.stat b{display:block;font-family:var(--display);font-weight:900;font-size:1.9rem;line-height:1.05;color:var(--ink)}
+.stat span{font-size:.92rem;color:var(--muted);line-height:1.4;display:block;margin-top:4px}
+.rules{list-style:none;padding:0;display:grid;gap:10px}
+.rules li{padding:14px 18px;border-radius:16px;background:var(--bg-alt);margin:0}
+.note{font-family:var(--hand);font-weight:700;font-size:1.5rem;color:var(--accent-text);display:inline-block;rotate:-2deg}
+.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{margin:0;font-size:.9rem;font-weight:600;padding:5px 11px;border-radius:9px;background:var(--bg-alt)}
+.end{margin-top:48px;padding:24px;border-radius:24px;background:var(--ink);color:#F6F5F3}
+.end h2{color:#fff;margin-top:0}
+.end a{color:#fff;font-weight:700}
+footer .wrap{max-width:1100px;padding-block:28px;font-size:.95rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="home" href="../../">← Samir Maikap</a><a class="cta" href="../../#contact">Hire me</a></div></header>
+<main><article class="wrap">
+<p class="kicker">Case study · Catalog Digital · 2025–2026</p>
+<h1>Building Catalog's AI stylist: virtual try-on that fails safely</h1>
+<p class="meta">By Samir Maikap, Senior AI Product Engineer · November 2026 · 5 min read</p>
+<p class="lead">Catalog is an AI fashion app where shoppers see outfits on their own photo. Working with Catalog Digital's founders, I built the try-on pipeline and a catalog that stocks itself. The hard part wasn't the AI call. It was making every step safe to retry, cheap to run, and honest when something goes wrong.</p>
+<div class="stats">
+  <div class="stat hot"><b>1 retry</b><span>a model fallback that can't loop or fire twice</span></div>
+  <div class="stat"><b>9:16</b><span>try-on clips from one selfie and up to nine product shots</span></div>
+  <div class="stat"><b>4 brands</b><span>onboarded through the Shopify portal</span></div>
+</div>
+
+<h2>Step 1: check the selfie</h2>
+<p>Claude Haiku vision reads each selfie and returns JSON: is the face clear, is there exactly one person, is it a real photo, and, as a soft signal only, is it full body, with a friendly reason for the shopper. The app rejects a photo that fails any of the first three. If the check itself errors, the upload goes through, so an outage never blocks a shopper.</p>
+
+<h2>Step 2: render the outfit</h2>
+<p>Seedance 2.0 on Fal renders a 9:16, 720p clip from one face and up to nine product packshots. Every image is first copied into the project's own storage, with its file type checked from the bytes and a 15 MB cap. Packshots go in as images only when they contain no person. Otherwise the product is described in the prompt, and an identity lock keeps the face coming from the selfie only.</p>
+
+<h2>Step 3: a fallback that can't loop</h2>
+<p>Results come back by webhook, not polling. When the provider rejects a Seedance render on content policy or moderation, the job goes back to pending and re-runs once on Google's Gemini model. The fallback only triggers from Seedance renders, and it clears the request id, so the same callback can never fire it twice.</p>
+
+<h2>Making it observable</h2>
+<ul>
+  <li>Each job lives in one row: pending, generating, then done or failed.</li>
+  <li>The render function and the webhook both ignore repeat calls.</li>
+  <li>Every step is written to an event log and shown on an admin timeline.</li>
+  <li>A job stuck for 20 minutes shows as failed instead of spinning forever.</li>
+</ul>
+
+<h2>A catalog that stocks itself</h2>
+<ol>
+  <li>Shopper searches are grouped and ranked, with extra weight on searches that returned nothing.</li>
+  <li>Claude Haiku sorts the search terms into real ones and junk.</li>
+  <li>Claude Sonnet expands longer, scenario-style searches into product queries.</li>
+  <li>Google Shopping results come in, duplicates are skipped by URL, and new products start inactive.</li>
+  <li>Claude tags each product with occasions.</li>
+  <li>A product goes live only once it has an image and occasion tags.</li>
+</ol>
+<p>Cost has guardrails too: a monthly search budget, an off switch, at most three search targets per run, and a cost log for every AI call.</p>
+
+<h2>The Shopify portal</h2>
+<p>Brands connect their store with Shopify login, protected by a signed state token. Products sync over GraphQL, 50 per page and up to 1,000 per call, and re-running a sync is safe. The portal onboarded four brands.</p>
+
+<h2>Tests</h2>
+<p>CI runs type checks, Vitest unit tests and Playwright smoke tests, including tests for which render model a job routes to.</p>
+<p><span class="note">retries are a feature, not an accident</span></p>
+
+<h2>Stack</h2>
+<ul class="chips"><li>Supabase Edge Functions</li><li>Deno</li><li>TypeScript</li><li>Claude Haiku</li><li>Claude Sonnet</li><li>Seedance 2.0</li><li>Gemini</li><li>Fal</li><li>Shopify GraphQL</li><li>Remix</li><li>Flutter</li></ul>
+<section class="end">
+  <h2>Need an AI feature that has to be right?</h2>
+  <p>I'm available now for full-time remote roles and select AI builds, with 9am–1pm ET overlap. Email <a href="mailto:maikap.samir@gmail.com">maikap.samir@gmail.com</a> or see <a href="../../">my work</a>. Code walkthrough on request.</p>
+</section>
+</article></main>
+<footer><div class="wrap">© 2026 Samir Maikap · <a href="../../">withsam.io home</a> · <a href="https://github.com/samirmaikap">GitHub</a> · <a href="https://www.linkedin.com/in/samirmaikap">LinkedIn</a></div></footer>
+</body>
+</html>
