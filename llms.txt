@@ -2,7 +2,7 @@
 
 > Senior product engineer in Kolkata, India, working US hours. Since 2017 I've shipped 49 web, mobile and AI products end to end for US founders and agencies: Laravel and Vue platforms, React Native and Flutter apps, and Next.js products with LLM features. I use AI coding agents where they save time and review, test and own everything that ships. Available now for full-time remote roles (9am–1pm ET overlap) and select projects.
 
-Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · LinkedIn: https://www.linkedin.com/in/samirmaikap · Résumé: https://withsam.io/resume.pdf
+Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · LinkedIn: https://www.linkedin.com/in/samirmaikap · Resume: https://withsam.io/resume.pdf
 
 ## Case studies
 
