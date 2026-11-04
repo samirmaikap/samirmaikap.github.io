@@ -31,10 +31,10 @@ Full filterable timeline: https://withsam.io/projects/
 - 8-network publishing platform (2026): Posts to eight social networks with no duplicates on retries, an MCP server for AI agents and database-tested tenant isolation. Stack: Supabase · MCP · pgTAP.
 - Decize (2025–2026): Decision ledger for teams: capture decisions from web, email and Slack, forecast them, follow up on outcomes and review. Stack: Next.js · Supabase · Claude · Gemini. https://decize.app
 - Catalog (2025–2026): AI fashion app with virtual try-on on the shopper's own photo, and a catalog that stocks itself from shopper searches. Stack: Flutter · Supabase · Claude · Seedance · Shopify. https://catalog.shop
-- Feather (2025–2026): ChatGPT-style assistant that answers from a company's Google Drive with cited sources. Shipped in five weeks. Stack: Remix · NestJS · Postgres · OpenAI.
+- Feather (2025–2026): ChatGPT-style assistant that answers from a company's Google Drive with cited sources. Shipped in five weeks. Stack: Remix · NestJS · Postgres · OpenAI. https://feathervq.com/
 - Email Proof (2025): Validation API for emails, Instagram handles and other inputs, offered on RapidAPI with a landing page and playground. Stack: Python · Docker · Next.js.
 - LeadershipFITT (2024–2025): Leadership development app: 360° assessments, learning with quizzes, and an AI coach grounded in each user's results. Stack: React Native · AWS Amplify · OpenAI.
-- SotoFit (2024–2025): Fitness app with calorie tracking, food search, workouts, progress and reminders, using Gemini. Stack: React Native · Firebase · Gemini.
+- SotoFit (2024–2025): Fitness app with calorie tracking, food search, workouts, progress and reminders, using Gemini. Stack: React Native · Firebase · Gemini. https://www.sotofits.com/
 - Interplay (2024–2025): App that pairs with a connected pet crate over Wi-Fi to manage pets, schedules and media. Stack: React Native · Firebase.
 - CMC Time Tracking (2024–2025): Time tracking for field staff: clock in and out of assigned services, report incidents and missed visits. Stack: React Native · TypeScript.
 - WayWeGo (2024–2025): Place discovery app with posts and community; the backend gathers places by district from Google Maps. Stack: Flutter · NestJS · PostGIS · Gemini.
@@ -45,16 +45,16 @@ Full filterable timeline: https://withsam.io/projects/
 - Clinical Notes (2024): Lets clinicians record sessions, transcribe them and turn them into notes. Stack: Expo · React Native · transcription API.
 - SimpleRev (2024): Account onboarding with email, phone and address verification and KYC. Stack: React Native · React Query.
 - WildTrack (2024): Field app for logging wildlife sightings with photos, GPS location and maps that work offline. Stack: Flutter · OpenStreetMap · SQLite. https://www.wildtrack.org
-- Surrogacy Together (2023–2026): Companion app for surrogacy journeys: milestones, community, providers, questions and agency codes. Stack: React Native · TypeScript.
-- Vitrine (2023–2025): App for showing off collectibles, with search, chat, SMS invites, paid plans and an admin panel. Stack: React Native · Node.js · Twilio.
+- Surrogacy Together (2023–2026): Companion app for surrogacy journeys: milestones, community, providers, questions and agency codes. Stack: React Native · TypeScript. https://thebiggestask.com/
+- Vitrine (2023–2025): App for showing off collectibles, with search, chat, SMS invites, paid plans and an admin panel. Stack: React Native · Node.js · Twilio. https://www.myvitrine.app/
 - Ventures (2023–2024): Travel app with map search and subscriptions; the API computes flight paths between airports. Stack: React Native · NestJS · Postgres · AWS Lambda.
 - Expensense (2023–2024): Expense tracker with budgets, reports, voice entry, receipt upload and bill splitting. Stack: React Native · Laravel · Next.js.
 - UpkeepSkin (2023–2024): Headless Shopify storefront, with a Laravel service that places custom orders. Stack: Shopify Hydrogen · Remix · Laravel.
 - Bartesian (2023–2024): Companion app for the Bartesian cocktail machine: capsules, recipes, shop, orders, rewards and subscriptions. Stack: React Native · GraphQL. https://bartesian.com
-- Africa One Stop (2023): Business directory with paid subscriptions on mobile and web, plus an admin panel. Stack: Expo · Laravel · Inertia · React.
+- Africa One Stop (2023): Business directory with paid subscriptions on mobile and web, plus an admin panel. Stack: Expo · Laravel · Inertia · React. https://play.google.com/store/apps/details?id=com.app.africaOneStop
 - The Kitchen (2023): Marketplace to book private chefs: availability calendar, booking fees, Stripe payments and messaging. Stack: Flutter · Firebase · Stripe.
 - Vrenz (2023): Health app with home test flows, chat, favorites and subscription plans. Stack: React Native · Firebase.
-- The Biggest Ask (2022–2026): Guides families through pregnancy and surrogacy programs: milestones, providers, community and an admin panel. Stack: React Native · Laravel · Angular.
+- The Biggest Ask (2022–2026): Guides families through pregnancy and surrogacy programs: milestones, providers, community and an admin panel. Stack: React Native · Laravel · Angular. https://thebiggestask.com/
 - Slick-Rx (2022–2026): Online pharmacy: provider profiles from the NPI database, prescriptions for pharmacies, search and pricing. Stack: Laravel · Next.js · Google Maps.
 - ProjectBees (2022): Community app with posts, communities, chat and explore. Stack: React Native · Firebase.
 - AOA (2022): Shows pollen, asthma and disease risk by zip code on a map, backed by a Python API. Stack: Flutter · Python · Google Maps.
