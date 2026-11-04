@@ -1455,7 +1455,8 @@ const fitWordmark = () => {
   wm.style.fontSize = "100px";
   const cs = getComputedStyle(wm);
   const room = wm.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-  const used = wm.scrollWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const r = document.createRange(); r.selectNodeContents(wm);
+  const used = r.getBoundingClientRect().width;   // width of the text itself, not the box
   wm.style.fontSize = (100 * room / used).toFixed(2) + "px";
 };
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(fitWordmark);
