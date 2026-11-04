@@ -19,6 +19,8 @@ Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · Lin
 
 ## All projects (by start year)
 
+Full filterable timeline: https://withsam.io/projects/
+
 - SpawnSweep (2026): Mac menu bar app that finds and cleans up what AI coding agents leave running: dev servers, ports, simulators, Docker stacks and worktrees. Stack: Swift · SwiftUI. https://github.com/samirmaikap/spawnsweep
 - BFO GTM dashboard (2026): Go-to-market dashboard for BFO companies, with a public developer guide, OAuth and an MCP server endpoint. Stack: Next.js · TypeScript · Supabase · MCP.
 - Rumo (2026): Hyperlocal app where neighbours share voice posts about nearby classes, cafés and plans, follow places and join circles. iOS builds on TestFlight. Stack: Flutter · Supabase · speech-to-text.
