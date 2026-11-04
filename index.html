@@ -818,6 +818,17 @@ a.tile:hover .go{transform:rotate(45deg)}
 .motion .ring .fgc{stroke-dashoffset:10.4}
 .motion .wordmark .lt{transform:translateY(105%)}
 
+
+/* Arrow icon inside links and buttons */
+svg.arr{width:1em;height:1em;flex:none;stroke-width:2.4;vertical-align:-.14em}
+
+/* Phones: equal, full-width buttons; mockups sit on the page without a tinted panel */
+@media (max-width:640px){
+  .btn-row{flex-direction:column;align-items:stretch}
+  .btn-row > .btn{width:100%}
+  .feat-shot{background:none;padding:0;aspect-ratio:auto;border-radius:0;overflow:visible}
+  .feat-shot .ui{max-width:none}
+}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -864,7 +875,7 @@ a.tile:hover .go{transform:rotate(45deg)}
             <a class="btn btn-orange" href="#services">Hire me for a project</a>
             <a class="btn btn-blue" href="resume.pdf">Download résumé</a>
           </div>
-          <div class="quick h-in"><a href="#experience">Experience ↓</a><a href="https://www.linkedin.com/in/samirmaikap">LinkedIn ↗</a><a href="https://github.com/samirmaikap">GitHub ↗</a></div>
+          <div class="quick h-in"><a href="#experience">Experience ↓</a><a href="https://www.linkedin.com/in/samirmaikap">LinkedIn <i data-lucide="arrow-up-right" class="arr"></i></a><a href="https://github.com/samirmaikap">GitHub <i data-lucide="arrow-up-right" class="arr"></i></a></div>
         </div>
 
         <figure class="me h-in">
@@ -933,7 +944,7 @@ a.tile:hover .go{transform:rotate(45deg)}
             <p>Try-on clips rendered on the shopper's own selfie, with a one-shot fallback when a model refuses. The catalog grows from what shoppers search for.</p>
             <div class="result"><b data-count="4" data-suffix=" brands">4 brands</b><span>onboarded through the Shopify portal</span></div>
             <ul class="chips"><li>Claude</li><li>Gemini</li><li>Seedance</li><li>Flutter</li><li>Shopify</li></ul>
-            <div class="links"><a href="https://catalog.shop">catalog.shop ↗</a><a href="case-studies/catalog-try-on/">How the try-on works →</a></div>
+            <div class="links"><a href="https://catalog.shop">catalog.shop <i data-lucide="arrow-up-right" class="arr"></i></a><a href="case-studies/catalog-try-on/">How the try-on works →</a></div>
           </div>
         </article>
 
@@ -956,7 +967,7 @@ a.tile:hover .go{transform:rotate(45deg)}
             <p>Lean tools in 2018, then LeadershipFITT with an AI coach grounded in each user's results, now FITTWorks.</p>
             <div class="result"><b data-count="8" data-suffix=" years">8 years</b><span>3 product generations, same client</span></div>
             <ul class="chips"><li>Next.js</li><li>React Native</li><li>OpenAI RAG</li><li>Laravel</li></ul>
-            <div class="links"><a href="https://fittworks.app">fittworks.app ↗</a></div>
+            <div class="links"><a href="https://fittworks.app">fittworks.app <i data-lucide="arrow-up-right" class="arr"></i></a></div>
           </div>
         </article>
 
@@ -982,7 +993,7 @@ a.tile:hover .go{transform:rotate(45deg)}
             <p>Capture decisions from web, email and Slack, frame and forecast them, follow up on outcomes and review.</p>
             <div class="result"><b>91.6% → <span data-count="100" data-from="91.6" data-dec="1" data-suffix="%">100%</span></b><span>faithful debrief lines, 57-case stress set</span></div>
             <ul class="chips"><li>Next.js</li><li>Supabase</li><li>Claude</li><li>Gemini</li></ul>
-            <div class="links"><a href="https://decize.app">decize.app ↗</a><a href="case-studies/decize-evals/">How the evals work →</a></div>
+            <div class="links"><a href="https://decize.app">decize.app <i data-lucide="arrow-up-right" class="arr"></i></a><a href="case-studies/decize-evals/">How the evals work →</a></div>
           </div>
         </article>
       </div>
@@ -1057,7 +1068,7 @@ a.tile:hover .go{transform:rotate(45deg)}
           <li>9am–1pm ET overlap</li>
           <li>Code walkthrough on request</li>
         </ul>
-        <div class="btn-row"><a class="btn btn-blue" href="resume.pdf">Download résumé</a><a class="btn btn-soft" href="https://www.linkedin.com/in/samirmaikap">LinkedIn ↗</a></div>
+        <div class="btn-row"><a class="btn btn-blue" href="resume.pdf">Download résumé</a><a class="btn btn-soft" href="https://www.linkedin.com/in/samirmaikap">LinkedIn <i data-lucide="arrow-up-right" class="arr"></i></a></div>
       </div>
 
       <figure class="gantt" id="gantt" aria-labelledby="gantt-title">
@@ -1237,7 +1248,7 @@ a.tile:hover .go{transform:rotate(45deg)}
           <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span id="term-title">example · spec.md</span></div>
           <div class="term-body" aria-hidden="true">
             <pre class="tpanel" data-title="example · spec.md"><span class="ln c-hot">## Feature: virtual try-on</span><span class="ln">Done means:</span><span class="ln">- Shopper uploads a selfie</span><span class="ln">- Outfit renders on their photo</span><span class="ln">- Fallback model if the first refuses</span></pre>
-            <pre class="tpanel" data-title="example · agent session"><span class="ln c-cmd">$ agent "build try-on per spec.md"</span><span class="ln c-dim">▸ reading spec.md</span><span class="ln c-dim">▸ editing app/try-on/route.ts</span><span class="ln c-dim">▸ editing lib/render.ts</span><span class="ln c-ok">✔ 6 files changed · review requested</span></pre>
+            <pre class="tpanel" data-title="example · agent session"><span class="ln c-cmd">$ agent "build try-on per spec.md"</span><span class="ln c-dim">▸ reading spec.md</span><span class="ln c-dim">▸ editing app/try-on/route.ts</span><span class="ln c-dim">▸ editing lib/render.ts</span><span class="ln c-ok">✓ 6 files changed · review requested</span></pre>
             <pre class="tpanel" data-title="example · checks"><span class="ln c-cmd">$ npm test && npm run evals</span><span class="ln c-ok">✓ unit tests       vitest</span><span class="ln c-ok">✓ user flows       playwright</span><span class="ln c-ok">✓ data policies    pgTAP</span><span class="ln c-ok">✓ prompt evals     all cases pass</span></pre>
             <pre class="tpanel" data-title="example · deploy"><span class="ln c-cmd">$ git push origin main</span><span class="ln c-dim">▸ pull request reviewed and merged</span><span class="ln c-dim">▸ deploying to production</span><span class="ln c-ok">● live · shipped this week</span></pre>
           </div>
@@ -1362,8 +1373,8 @@ a.tile:hover .go{transform:rotate(45deg)}
           <p>Available now for full-time remote roles, with 9am–1pm ET overlap. Code walkthrough on request.</p>
           <div class="btn-row">
             <a class="btn btn-ink" href="resume.pdf">Download résumé</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/samirmaikap">LinkedIn ↗</a>
-            <a class="btn btn-ghost" href="https://github.com/samirmaikap">GitHub ↗</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/samirmaikap">LinkedIn <i data-lucide="arrow-up-right" class="arr"></i></a>
+            <a class="btn btn-ghost" href="https://github.com/samirmaikap">GitHub <i data-lucide="arrow-up-right" class="arr"></i></a>
           </div>
         </div>
       </div>
