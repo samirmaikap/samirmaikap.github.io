@@ -1,6 +1,6 @@
 # Samir Maikap
 
-> Senior AI Product Engineer in Kolkata, India, working US hours. I help founders and product teams turn an AI idea into a product people rely on, in weeks: one senior engineer who plans weekly, builds with AI coding agents, and verifies AI output with tests and evals. Independent since 2017. Available now for full-time remote roles and select AI builds.
+> Senior product engineer in Kolkata, India, working US hours. Since 2017 I've shipped 49 web, mobile and AI products end to end for US founders and agencies: Laravel and Vue platforms, React Native and Flutter apps, and Next.js products with LLM features. I use AI coding agents where they save time and review, test and own everything that ships. Available now for full-time remote roles (9am–1pm ET overlap) and select projects.
 
 Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · LinkedIn: https://www.linkedin.com/in/samirmaikap · Résumé: https://withsam.io/resume.pdf
 
@@ -9,16 +9,62 @@ Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · Lin
 - [How I made Decize's AI debriefs trustworthy](https://withsam.io/case-studies/decize-evals/): blind LLM judges, a 57-case stress set and a fresh 36-case holdout; faithful debrief lines from 91.6% to 100%.
 - [Building Catalog's AI stylist](https://withsam.io/case-studies/catalog-try-on/): Claude vision selfie check, Seedance renders with a one-shot Gemini fallback, and a catalog that stocks itself from shopper searches.
 
-## Selected work
+## Experience
 
-- [Catalog](https://catalog.shop): AI fashion app with virtual try-on (Catalog Digital, 2025–2026). Shopify portal onboarded 4 brands.
-- [FITTWorks](https://fittworks.app): third generation of the FITT product line for MCS Media (lead engineer since 2018), after LeanFITT and LeadershipFITT with an AI coach.
-- [Decize](https://decize.app): decision ledger for teams with eval-checked AI debriefs (own product).
-- [Bartesian](https://bartesian.com): lead developer of the cocktail machine's companion app (2023–2024).
-- [WildTrack](https://www.wildtrack.org): field app for logging wildlife sightings (2024).
-- [Tovo](https://tovo.run): Slack-native team checklists on Claude Haiku, 12 days to the Slack Marketplace.
-- [SpawnSweep](https://github.com/samirmaikap/spawnsweep): Mac app that cleans up after AI coding agents.
+- MCS Media Inc., Lead Engineer, FITT product line (2018–present): LeanFITT (2018), LeadershipFITT with an AI coach (2024–25), FITTWorks (2026).
+- Catalog Digital Inc., Senior Product Engineer, contract (Mar 2025–Oct 2026): Catalog (AI fashion), Feather (AI knowledge base), The Quest (iOS game).
+- Freelance lead developer (2017–2025): Bartesian, Waywego, Vitrine, UpkeepSkin, Africa One Stop, Slick-Rx (led 5 developers), The Biggest Ask.
+- Own products (2025–now): Decize, Tovo, SpawnSweep.
+- B.Tech, Computer Science, West Bengal University of Technology (2016).
 
-## Skills
+## All projects (by start year)
 
-AI: Claude, Gemini, OpenAI, RAG with pgvector, LLM evals and judges, MCP servers and agents. Product: TypeScript, Next.js, React, Remix, Node.js, Python. Mobile: Flutter, React Native, SwiftUI. Data and testing: Supabase, PostgreSQL, AWS, Vitest, Playwright, pgTAP.
+- SpawnSweep (2026): Mac menu bar app that finds and cleans up what AI coding agents leave running: dev servers, ports, simulators, Docker stacks and worktrees. Stack: Swift · SwiftUI. https://github.com/samirmaikap/spawnsweep
+- BFO GTM dashboard (2026): Go-to-market dashboard for BFO companies, with a public developer guide, OAuth and an MCP server endpoint. Stack: Next.js · TypeScript · Supabase · MCP.
+- Rumo (2026): Hyperlocal app where neighbours share voice posts about nearby classes, cafés and plans, follow places and join circles. iOS builds on TestFlight. Stack: Flutter · Supabase · speech-to-text.
+- CarBye (2026): Site for a Kolkata used-car buyer: owners enter make, model, year and km for an instant price range, then continue on WhatsApp. Stack: Next.js · Supabase · Claude.
+- Tovo (2026): Team checklists run from Slack, with a web dashboard, reusable templates and a live activity log. 12 days to the Slack Marketplace. Stack: Next.js · Supabase · Slack API · Claude. https://tovo.run
+- Track Expense (2026): Personal expense tracker with charts and cloud sync, deployed by GitHub Actions. Stack: React · Vite · Supabase.
+- FITTWorks (2026): Third generation of the FITT platform for MCS Media. Three companies on board before launch. Stack: Next.js · TypeScript. https://fittworks.app
+- 8-network publishing platform (2026): Posts to eight social networks with no duplicates on retries, an MCP server for AI agents and database-tested tenant isolation. Stack: Supabase · MCP · pgTAP.
+- Decize (2025–2026): Decision ledger for teams: capture decisions from web, email and Slack, forecast them, follow up on outcomes and review. Stack: Next.js · Supabase · Claude · Gemini. https://decize.app
+- Catalog (2025–2026): AI fashion app with virtual try-on on the shopper's own photo, and a catalog that stocks itself from shopper searches. Stack: Flutter · Supabase · Claude · Seedance · Shopify. https://catalog.shop
+- Feather (2025–2026): ChatGPT-style assistant that answers from a company's Google Drive with cited sources. Shipped in five weeks. Stack: Remix · NestJS · Postgres · OpenAI.
+- Email Proof (2025): Validation API for emails, Instagram handles and other inputs, offered on RapidAPI with a landing page and playground. Stack: Python · Docker · Next.js.
+- LeadershipFITT (2024–2025): Leadership development app: 360° assessments, learning with quizzes, and an AI coach grounded in each user's results. Stack: React Native · AWS Amplify · OpenAI.
+- SotoFit (2024–2025): Fitness app with calorie tracking, food search, workouts, progress and reminders, using Gemini. Stack: React Native · Firebase · Gemini.
+- Interplay (2024–2025): App that pairs with a connected pet crate over Wi-Fi to manage pets, schedules and media. Stack: React Native · Firebase.
+- CMC Time Tracking (2024–2025): Time tracking for field staff: clock in and out of assigned services, report incidents and missed visits. Stack: React Native · TypeScript.
+- WayWeGo (2024–2025): Place discovery app with posts and community; the backend gathers places by district from Google Maps. Stack: Flutter · NestJS · PostGIS · Gemini.
+- ManagementFITT (2024): Management training platform with organizations, users, assessments and learning. Stack: React · AWS Amplify · GraphQL.
+- Telly College (2024): Social app for college students: find people, chat, events, votes and rewards. Stack: React Native · Firebase.
+- Receipt manager (2024): Mobile app for managing receipts, with date filters and downloadable reports. Stack: React Native.
+- Boysenberry (2024): Social app with chat, an in-app wallet and subscriptions, plus App Store and Play receipt checks. Stack: React Native · Node.js · Stripe.
+- Clinical Notes (2024): Lets clinicians record sessions, transcribe them and turn them into notes. Stack: Expo · React Native · transcription API.
+- SimpleRev (2024): Account onboarding with email, phone and address verification and KYC. Stack: React Native · React Query.
+- WildTrack (2024): Field app for logging wildlife sightings with photos, GPS location and maps that work offline. Stack: Flutter · OpenStreetMap · SQLite. https://www.wildtrack.org
+- Surrogacy Together (2023–2026): Companion app for surrogacy journeys: milestones, community, providers, questions and agency codes. Stack: React Native · TypeScript.
+- Vitrine (2023–2025): App for showing off collectibles, with search, chat, SMS invites, paid plans and an admin panel. Stack: React Native · Node.js · Twilio.
+- Ventures (2023–2024): Travel app with map search and subscriptions; the API computes flight paths between airports. Stack: React Native · NestJS · Postgres · AWS Lambda.
+- Expensense (2023–2024): Expense tracker with budgets, reports, voice entry, receipt upload and bill splitting. Stack: React Native · Laravel · Next.js.
+- UpkeepSkin (2023–2024): Headless Shopify storefront, with a Laravel service that places custom orders. Stack: Shopify Hydrogen · Remix · Laravel.
+- Bartesian (2023–2024): Companion app for the Bartesian cocktail machine: capsules, recipes, shop, orders, rewards and subscriptions. Stack: React Native · GraphQL. https://bartesian.com
+- Africa One Stop (2023): Business directory with paid subscriptions on mobile and web, plus an admin panel. Stack: Expo · Laravel · Inertia · React.
+- The Kitchen (2023): Marketplace to book private chefs: availability calendar, booking fees, Stripe payments and messaging. Stack: Flutter · Firebase · Stripe.
+- Vrenz (2023): Health app with home test flows, chat, favorites and subscription plans. Stack: React Native · Firebase.
+- The Biggest Ask (2022–2026): Guides families through pregnancy and surrogacy programs: milestones, providers, community and an admin panel. Stack: React Native · Laravel · Angular.
+- Slick-Rx (2022–2026): Online pharmacy: provider profiles from the NPI database, prescriptions for pharmacies, search and pricing. Stack: Laravel · Next.js · Google Maps.
+- ProjectBees (2022): Community app with posts, communities, chat and explore. Stack: React Native · Firebase.
+- AOA (2022): Shows pollen, asthma and disease risk by zip code on a map, backed by a Python API. Stack: Flutter · Python · Google Maps.
+- A9 PDF (2022): Service that turns HTML into password-protected PDFs and stores them on S3. Stack: Laravel · Puppeteer · S3.
+- WhatsApp question bot (2022): Dashboard for setting up question bots on WhatsApp. Stack: React · MUI · Firebase.
+- Korean B2B (2021–2024): B2B marketplace for Korean products: suppliers, quotations, purchase requests and buyer-seller chat. Stack: Laravel · GraphQL · React · Next.js.
+- WishThread (2021): Group greetings: collect messages and media, pick a theme, send the wish and download it as a PDF. Stack: Laravel · Vue.
+- Winner Wheel (2021): Live prize draw for events, with real-time winner picks. Stack: Laravel · Vue · Pusher.
+- Clinic enquiries admin (2020–2022): Admin for clinics: enquiries, patients, consultants, payments and reports. Stack: Laravel · Vue.
+- Local business platform (2020): Posts, QR-code coupons, payments, HubSpot and Zapier integrations, and Facebook auto-posting for local businesses. Stack: Laravel · Vue · HubSpot API.
+- Probstack (2020): Developer community with posts, votes, company pages, ads and a newsletter. Stack: Laravel · Vue.
+- Jobsite (2020): Job board with company profiles, a blog, subscriptions and Excel import and export. Stack: Laravel · Vue.
+- Comend (2019): Multi-tenant merchant platform API with a database per tenant, roles and permissions. Stack: Laravel · Passport.
+- LeanFITT (2018): Lean improvement platform: 23 lean tools, KPI dashboards, action-item boards and subscriptions. First generation of the FITT line. Stack: Laravel · Vue · Stripe.
+- Omnipay Razorpay (2017): Open-source Razorpay driver for the Omnipay PHP payments library. Stack: PHP · Composer. https://github.com/samirmaikap/omnipay-razorpay
