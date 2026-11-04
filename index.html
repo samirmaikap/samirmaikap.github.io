@@ -790,7 +790,7 @@ a.tile:hover .go{transform:rotate(45deg)}
 /* ---------- Footer ---------- */
 .foot{background:var(--band);color:var(--band-dim);overflow:hidden}
 .foot .wrap{display:flex;flex-direction:column;gap:28px;padding-block:8px 32px}
-.wordmark{font-family:var(--display);font-weight:900;font-size:clamp(2.6rem,11.2vw,10.5rem);line-height:.86;letter-spacing:-.045em;color:var(--band-ink);white-space:nowrap;overflow:hidden;padding-bottom:.06em}
+.wordmark{font-family:var(--display);font-weight:900;font-size:13.6vw;line-height:.86;letter-spacing:-.045em;color:var(--band-ink);white-space:nowrap;overflow:hidden;text-align:center;padding:.04em max(10px,1.2vw) .06em}
 .wordmark .lt{display:inline-block}
 .wordmark .dotc{color:var(--orange)}
 .foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px 24px;font-size:1rem}
@@ -1383,8 +1383,8 @@ svg.arr{width:1em;height:1em;flex:none;stroke-width:2.4;vertical-align:-.14em}
 </main>
 
 <footer class="foot">
+  <div class="wordmark" id="wordmark" aria-hidden="true">Samir Maikap<span class="lt dotc">.</span></div>
   <div class="wrap">
-    <div class="wordmark" id="wordmark" aria-hidden="true">Samir Maikap<span class="lt dotc">.</span></div>
     <div class="foot-row">
       <span class="made">Built with AI agents, reviewed by a human · © 2026 Samir Maikap</span>
       <nav aria-label="Profiles">
@@ -1451,6 +1451,15 @@ copyBtn.addEventListener("click", () => {
 
 // Footer wordmark: one span per letter so they can rise in.
 const wm = document.getElementById("wordmark");
+const fitWordmark = () => {
+  wm.style.fontSize = "100px";
+  const cs = getComputedStyle(wm);
+  const room = wm.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const used = wm.scrollWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  wm.style.fontSize = (100 * room / used).toFixed(2) + "px";
+};
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(fitWordmark);
+addEventListener("resize", fitWordmark);
 const wmText = wm.firstChild.textContent;
 wm.firstChild.replaceWith(...[...wmText].map(ch => {
   const s = document.createElement("span"); s.className = "lt"; s.textContent = ch === " " ? " " : ch; return s;
