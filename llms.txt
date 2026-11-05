@@ -2,12 +2,12 @@
 
 > Senior product engineer in Kolkata, India, working US hours. Since 2017 I've shipped 49 web, mobile and AI products end to end for US founders and agencies: Laravel and Vue platforms, React Native and Flutter apps, and Next.js products with LLM features. I use AI coding agents where they save time and review, test and own everything that ships. Available now for full-time remote roles (9am–1pm ET overlap) and select projects.
 
-Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · LinkedIn: https://www.linkedin.com/in/samirmaikap · Resume: https://withsam.io/resume.pdf
+Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · LinkedIn: https://www.linkedin.com/in/samirmaikap · Resume: https://samirmaikap.dev/resume.pdf
 
 ## Case studies
 
-- [How I made Decize's AI debriefs trustworthy](https://withsam.io/case-studies/decize-evals/): blind LLM judges, a 57-case stress set and a fresh 36-case holdout; faithful debrief lines from 91.6% to 100%.
-- [Building Catalog's AI stylist](https://withsam.io/case-studies/catalog-try-on/): Claude vision selfie check, Seedance renders with a one-shot Gemini fallback, and a catalog that stocks itself from shopper searches.
+- [How I made Decize's AI debriefs trustworthy](https://samirmaikap.dev/case-studies/decize-evals/): blind LLM judges, a 57-case stress set and a fresh 36-case holdout; faithful debrief lines from 91.6% to 100%.
+- [Building Catalog's AI stylist](https://samirmaikap.dev/case-studies/catalog-try-on/): Claude vision selfie check, Seedance renders with a one-shot Gemini fallback, and a catalog that stocks itself from shopper searches.
 
 ## Experience
 
@@ -19,7 +19,7 @@ Contact: maikap.samir@gmail.com · GitHub: https://github.com/samirmaikap · Lin
 
 ## All projects (by start year)
 
-Full filterable timeline: https://withsam.io/projects/
+Full filterable timeline: https://samirmaikap.dev/projects/
 
 - SpawnSweep (2026): Mac menu bar app that finds and cleans up what AI coding agents leave running: dev servers, ports, simulators, Docker stacks and worktrees. Stack: Swift · SwiftUI. https://github.com/samirmaikap/spawnsweep
 - BFO GTM dashboard (2026): Go-to-market dashboard for BFO companies, with a public developer guide, OAuth and an MCP server endpoint. Stack: Next.js · TypeScript · Supabase · MCP.

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://withsam.io/sitemap.xml
+Sitemap: https://samirmaikap.dev/sitemap.xml
